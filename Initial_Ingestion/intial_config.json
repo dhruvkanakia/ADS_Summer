@@ -1,0 +1,15 @@
+{
+  "state": "CA",
+  "team": 5,
+  "link1": "https://www.ncei.noaa.gov/orders/cdo/994480.csv",
+  "link2": "https://www.ncei.noaa.gov/orders/cdo/994498.csv",
+  "link3": "https://www.ncei.noaa.gov/orders/cdo/994488.csv",
+  "link4": "https://www.ncei.noaa.gov/orders/cdo/994499.csv",
+  "link5": "https://www.ncei.noaa.gov/orders/cdo/994501.csv",
+  "link6": "https://www.ncei.noaa.gov/orders/cdo/994504.csv",
+  "link7": "https://www.ncei.noaa.gov/orders/cdo/994506.csv",
+  "link8": "https://www.ncei.noaa.gov/orders/cdo/994508.csv",
+  "AWSAccess":"AKIAIAYFK6UA4MV2FDAA",
+  "AWSSecret":"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",
+  "notificationEmail":"test@test.com"
+}
