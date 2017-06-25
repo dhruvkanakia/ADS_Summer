@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[29]:
+# In[1]:
 
 import os
 import requests
@@ -25,7 +25,7 @@ import botocore.session
 
 
 
-# In[30]:
+# In[2]:
 
 import logging
 import logging.handlers
@@ -50,7 +50,7 @@ logger.info('hello ')
 
 
 
-# In[24]:
+# In[3]:
 
 logger.info('Reading Json')
 with open('intial_config.json') as data_file:    
@@ -59,7 +59,7 @@ with open('intial_config.json') as data_file:
 # print(data)
 
 
-# In[25]:
+# In[4]:
 
 links=[]
 for values in (data['link1'],data['link2'],data['link3'],data['link4'],data['link5'],data['link6'],data['link7'],data['link8']):
@@ -67,19 +67,19 @@ for values in (data['link1'],data['link2'],data['link3'],data['link4'],data['lin
 links
 
 
-# In[26]:
+# In[5]:
 
 # path=os.getcwd()
 # #os.mkdir('Data1')
 # final_path= path+'/'+'Data1/'
 
 
-# In[27]:
+# In[6]:
 
 # final_path
 
 
-# In[28]:
+# In[7]:
 
 import io
 df_list= []
@@ -92,99 +92,29 @@ for x in links:
 full_df=pd.concat(df_list)
 
 
-# In[11]:
+# In[8]:
 
 # full_df.to_csv(os.path.join(final_path,'CA_140617_23155.csv'))
 
 
-# In[12]:
+# In[9]:
 
-if os.path.exists('CA_2017-06-14_23155.csv'):
-    print ('it exists')
-else:
-    full_df.to_csv(('CA_2017-06-14_23155.csv'))
+full_df.to_csv(('CA_2017-06-14_23155.csv'))
 
 
-# In[13]:
+# In[10]:
 
 full_df.head(2)
 
 
-# In[14]:
+# In[ ]:
 
-# import urllib.request
-# final= final_path+'CA_140617_23155.csv'
-# # if os.path.exists(final):
-#     print('File exists')
-# else:
-#     for x in links:
 
-#         csv = urllib.request.urlopen(x).read() # returns type 'bytes'
- 
         
-#         with open(final, 'a', newline='') as fx:
-
-#             # bytes, hence mode 'wb'
-#             fx.write(csv)
-
-
-# In[15]:
-
-# df= pd.read_csv(final)
-
-
-# In[16]:
-
-# df.head()
+        
 
 
 # In[17]:
-
-# df['temp_date']= df['DATE'].str[:-6]
-
-
-# In[18]:
-
-# df.head()
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[19]:
-
-# df_by_date = df.groupby("temp_date")
-# for (date, date_df) in df_by_date:
-#     #print (date)
-#     filename = date.replace("/", "") + ".csv"
-#     if os.path.exists(filename):
-#          print(filename+' '+ 'exists')
-#     else:
-        
-#         date_df.to_csv((filename))
-
-
-
-# In[ ]:
-
-
-        
-        
-
-
-# In[20]:
 
 import boto3
 s3 = boto3.resource(
@@ -197,12 +127,12 @@ client= boto3.client('s3',
                     aws_secret_access_key=data["AWSSecret"])
 
 
-# In[21]:
+# In[18]:
 
 # s3.create_bucket(Bucket='adsassign1_databucket')
 
 
-# In[31]:
+# In[19]:
 
 names=[]
 response = client.list_buckets()
@@ -216,42 +146,7 @@ else:
     s3.create_bucket(Bucket=Bucketname)   
 
 
-# In[32]:
-
-# import botocore
-# from botocore.client import ClientError
-# BucketName= 'adsassignment1_databucket1'
-# bucket= s3.Bucket(BucketName)
-# exists= True
-
-# try:
-#     s3.meta.client.head_bucket(Bucket=BucketName)
-# except botocore.exceptions.ClientError as e:
-#     error_code= int(e.respone['Error']['Code'])
-#     if error_code == 404:
-#         logger.info(BucketName+'does not exists!')
-#         exists= False
-        
-        
-#     else:
-#         logger.info('adsassign1_databucket exists')
-# if exists== False:
-   
-
-
-# In[ ]:
-
-
-
-
-# In[33]:
-
-
-# client.upload_file('2017-01-01.csv', 'adsassign1_databucket1', '2017-01-01.csv')
-# #client.put_object('adsassign1_databucket1', '2017-01-01.csv').put(Body=open('2017-01-01.csv', 'rb'))
-
-
-# In[35]:
+# In[20]:
 
 uploadFileNames = []
 
@@ -260,7 +155,7 @@ for filename in glob.glob("*.csv"):
     print(filename)
 
 
-# In[27]:
+# In[21]:
 
 import botocore.session
 for files in uploadFileNames:
@@ -283,32 +178,6 @@ for files in uploadFileNames:
 # In[ ]:
 
 
-
-
-# In[44]:
-
-# data= glob.glob('historical.csv')
-# # df1= pd.read_csv('historical.csv')
-
-
-# In[45]:
-
-# for file in glob.glob("*.csv"):
-#     print (file)
-
-
-# In[46]:
-
-# import os
-# for root, dirs, files in os.walk("\kanakia_dhruv_spring2017"):
-#     for file in files:
-#         if file.endswith(".csv"):
-#              print(os.path.join(root, file))
-
-
-# In[47]:
-
-# os.= '\D:\DataAnalysis4Python\kanakia_dhruv_spring2017\.csv'
 
 
 # In[ ]:
